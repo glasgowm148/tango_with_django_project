@@ -5,6 +5,9 @@ Github has a great boilerplate .gitignore
 __pycache__/
 *.py[cod]
 
+# db
+db.sqlite3
+
 # C extensions
 *.so
 
