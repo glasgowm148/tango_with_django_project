@@ -66,4 +66,4 @@ class Chapter3ViewTests(TestCase):
         # Check if in the about page is there a message
         self.client.get(reverse('index'))
         response = self.client.get(reverse('about'))
-        self.assertIn('Rango says here is the about page'.lower(), response.content.decode('ascii').lower())
+        self.assertIn(str.encode('Rango says here is the about page').lower(), response.content.decode('ascii').lower())
