@@ -73,7 +73,7 @@ class Chapter8ViewTests(TestCase):
 
         # Access add new category page and check the title displayed
         response = self.client.get(reverse('add_category'))
-        self.assertIn(str.encode('Add Category'.lower()), response.content.decode('ascii').lower())
+        self.assertIn('Add Category'.lower(), response.content.decode('ascii').lower())
 
     @chapter8
     def test_pages_using_templates(self):

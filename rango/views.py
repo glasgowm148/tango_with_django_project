@@ -56,6 +56,7 @@ def show_category(request, category_name_slug):
         context_dict['pages'] = None
     return render(request, 'rango/category.html', context_dict)
 
+@login_required 
 def add_category(request):
     form = CategoryForm()
 
@@ -77,6 +78,7 @@ def add_category(request):
         # Will handle the bad form, new form, or no form supplied cases. # Render the form with error messages (if any).
     return render(request, 'rango/add_category.html', {'form': form})
 
+@login_required 
 def add_page(request, category_name_slug):
     try:
         category = Category.objects.get(slug=category_name_slug) 
@@ -168,7 +170,7 @@ def get_server_side_cookie(request, cookie, default_val=None):
         val = default_val 
     return val
 
-def visitor_cookie_handler(request, response):
+def visitor_cookie_handler(request):
     visits = int(get_server_side_cookie(request, 'visits', '1'))    
     last_visit_cookie = get_server_side_cookie(request, 'last_visit', str(datetime.now())) 
     last_visit_time = datetime.strptime(last_visit_cookie[:-7], '%Y-%m-%d %H:%M:%S')
