@@ -35,6 +35,9 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+PASSWORD_HASHERS = ( 'django.contrib.auth.hashers.PBKDF2PasswordHasher', 'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher', )
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -101,6 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': { 'min_length': 6, }
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -129,3 +133,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+LOGIN_URL = '/rango/login/'
